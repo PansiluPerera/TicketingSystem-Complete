@@ -1,0 +1,10 @@
+server name = Ticketing-System
+user - postgres
+password - user
+
+database name - ticketing_system
+
+initialize within the IDE
+the backend will automatically create the tables
+
+after creating tables, manually add the admin credentials to the database as the superadmin

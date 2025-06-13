@@ -1,0 +1,500 @@
+{
+	"info": {
+		"_postman_id": "9b591613-0f2b-453a-a476-ab76ffa53426",
+		"name": "Ticketing System API",
+		"description": "The following is the API testing done for the **Real-Time Ticketing System** created by **Pansilu Perera (20230075)**. This documentation has been categorized by the different functions of the endpoints (how they relate to the backend and what they do). Each body of endpoint or parameter used have been clearly mentioned with examples. Some endpoints require variables being directly passed into the URL endpoint itself.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39099620"
+	},
+	"item": [
+		{
+			"name": "Register Endpoints",
+			"item": [
+				{
+					"name": "Register Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/auth/register/customer?username=Test2Customer&password=Test2CustomerPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Test2Customer"
+								},
+								{
+									"key": "password",
+									"value": "Test2CustomerPassword"
+								}
+							]
+						},
+						"description": "username and password are parameters needed for this endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Register Vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/auth/register/vendor?vendorName=Vendor2Test&vendorUserName=Vendor2Test&vendorPassword=Vendor2Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"register",
+								"vendor"
+							],
+							"query": [
+								{
+									"key": "vendorName",
+									"value": "Vendor2Test"
+								},
+								{
+									"key": "vendorUserName",
+									"value": "Vendor2Test"
+								},
+								{
+									"key": "vendorPassword",
+									"value": "Vendor2Test"
+								}
+							]
+						},
+						"description": "vendorName, vendorUserName and vendorPassword are required parameters for this endpoint."
+					},
+					"response": []
+				}
+			],
+			"description": "This section contains the register endpoints for customer and vendor. Both of these endpoints require the data to be posted as parameters."
+		},
+		{
+			"name": "Login Endpoints",
+			"item": [
+				{
+					"name": "Admin Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/auth/login/admin?adminUserName=parcival&adminPassword=parcival",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login",
+								"admin"
+							],
+							"query": [
+								{
+									"key": "adminUserName",
+									"value": "parcival"
+								},
+								{
+									"key": "adminPassword",
+									"value": "parcival"
+								}
+							]
+						},
+						"description": "adminUserName and adminPassword are required parameters for this endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Vendor Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/auth/login/vendor?vendorUserName=Testvendor1&vendorPassword=passwordVendor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login",
+								"vendor"
+							],
+							"query": [
+								{
+									"key": "vendorUserName",
+									"value": "Testvendor1"
+								},
+								{
+									"key": "vendorPassword",
+									"value": "passwordVendor"
+								}
+							]
+						},
+						"description": "vendorUserName and vendorPassword are required parameters for this endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/auth/login/customer?username=Test1Customer&password=Test1CustomerPassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"login",
+								"customer"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "Test1Customer"
+								},
+								{
+									"key": "password",
+									"value": "Test1CustomerPassword"
+								}
+							]
+						},
+						"description": "username and password are required parameters for this endpoint."
+					},
+					"response": []
+				}
+			],
+			"description": "This section contains the login endpoints for Admin, Customer and Vendor. All of these require the data to be set as parameters."
+		},
+		{
+			"name": "Event-Related Endpoints",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"event_name\": \"TestEvent\",\r\n  \"event_description\": \"This is a test event\",\r\n  \"maxTicketCapacity\": 250,\r\n  \"ticketReleaseRate\": 10,\r\n  \"customerRetrievalRate\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/admin/create-event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"admin",
+								"create-event"
+							]
+						},
+						"description": "To create an event, the event_name, event_description, maxTicketCapacity, ticketReleaseRate and customerRetrievalRate has to be post within the endpoint body as an array."
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/event/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"event",
+								"all"
+							]
+						},
+						"description": "This will return all available events as a JSON body."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/event/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"event",
+								"1"
+							]
+						},
+						"description": "This will return event details for a specific event defined by the event id that is inserted into the URL at the end."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ticket Purchases for Event ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/event/2/ticket-purchases",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"event",
+								"2",
+								"ticket-purchases"
+							]
+						},
+						"description": "This will return all the ticket purchases for a certain event by its event ID being inserted into the URL"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ticket Count Per Vendor For Event ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/event/1/ticket-count-per-vendor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"event",
+								"1",
+								"ticket-count-per-vendor"
+							]
+						},
+						"description": "This will return the ticket count per vendor id for a certain event specified by the event id in the URL"
+					},
+					"response": []
+				}
+			],
+			"description": "This section lists all the endpoints connected to controller methods that are related to CRUD operations of Events"
+		},
+		{
+			"name": "Customer-Related Endpoints",
+			"item": [
+				{
+					"name": "Get Ticket Purchases for User ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/11/tickets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"11",
+								"tickets"
+							]
+						},
+						"description": "Returns all the ticket purchases for a certain customer ID specified in the URL"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Customer into an Event Queue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/select-event/10/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"select-event",
+								"10",
+								"3"
+							]
+						},
+						"description": "Adds the customer into an event queue by specifying the userId of customer and eventID of the event in the URL in the form _**/select-event/userid/eventid**_"
+					},
+					"response": []
+				},
+				{
+					"name": "Find Customer by username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/find?username=customer",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"find"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "customer"
+								}
+							]
+						},
+						"description": "FInds all customers by the same username entered as a parameter. Used as a search function."
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"all"
+							]
+						},
+						"description": "Returns all the available customers in the system."
+					},
+					"response": []
+				}
+			],
+			"description": "This section contains the endpoints related to CRUD operations related to the Customer."
+		},
+		{
+			"name": "Vendor-Related Endpoints",
+			"item": [
+				{
+					"name": "Get All Vendors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/getVendors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"getVendors"
+							]
+						},
+						"description": "Returns all the vendors details in the system"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vendor by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"2"
+							]
+						},
+						"description": "Returns the details of a vendor by the vendor id specified in the URL"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Tickets by Vendor to Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"totalTickets\": 150\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vendors/3/events/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vendors",
+								"3",
+								"events",
+								"4"
+							]
+						},
+						"description": "Adds the tickets from a vendor to a specific event. Here, the vendorid and eventid should be specified in the URL in the form of _**/api/vendors/vendorid/events/eventid**_\n\nAlso, the totalTickets has to be set as a JSON body to be sent to the backend."
+					},
+					"response": []
+				}
+			],
+			"description": "Contains all the endpoints used to manage CRUD operations of Vendors"
+		}
+	]
+}
